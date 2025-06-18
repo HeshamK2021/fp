@@ -3,8 +3,8 @@ import pandas as pd
 import numpy as np
 import datetime
 
-st.title("TradeMind Bot Prototype")
-st.markdown("This is a feature prototype of TradeMind. It demonstrates a simple moving average strategy and mock advice system using dummy data.")
+st.title("TradeMind Bot Feature Prototype")
+st.markdown("This is a feature prototype of TradeMind. A simple MA (moving average) strategy using some radom data.")
 
 # Generating random price data
 np.random.seed(42)
@@ -23,7 +23,7 @@ df["Signal"][df["MA_5"] > df["MA_20"]] = 1
 df["Signal"][df["MA_5"] < df["MA_20"]] = -1
 latest_signal = df["Signal"].iloc[-1]
 
-# Displaying the prices chart
+# Displaying the line chart
 st.line_chart(df[["Price", "MA_5", "MA_20"]])
 
 # Displaying the signal recommendation
@@ -37,7 +37,7 @@ else:
 # Explanation Section
 with st.expander("Why this recommendation?"):
     st.write("""
-        TradeMind uses a simple moving average crossover strategy in this prototype.
-        When the 5-day MA crosses above the 20-day MA, it suggests an upward trend (BUY).
-        When the 5-day MA crosses below the 20-day MA, it signals a potential downturn (SELL).
+        This prototype demonstrates a simple Moving Average crossover strategy using randoml generated data.
+        When the 5-day MA crosses above the 20-day MA, it singals a bullish trend (BUY).
+        When the 5-day MA crosses below the 20-day MA, it signals a berrish (SELL).
     """)
